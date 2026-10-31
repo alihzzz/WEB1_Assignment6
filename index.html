@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6 - Part 1: Getting Started with jQuery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Assignment 6 (jQuery)</a>
+            <div class="navbar-nav">
+                <a class="nav-link active" href="index.html">Part 1: Basic</a>
+                <a class="nav-link" href="part2.html">Part 2: Effects</a>
+                <a class="nav-link" href="part3.html">Part 3: DOM</a>
+                <a class="nav-link" href="part4.html">Part 4: Animations</a>
+                <a class="nav-link" href="part5.html">Part 5: Mini Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm p-4 mb-4">
+                    <h2 id="main-title" class="text-center mb-3">Part 1: Getting Started with jQuery</h2>
+                    <p id="console-status" class="alert alert-info text-center">Checking jQuery status...</p>
+                </div>
+
+                <div class="card shadow-sm p-4">
+                    <h4 class="card-title border-bottom pb-2 mb-3">Task 1: Selectors, Content & CSS Manipulation</h4>
+                    
+                    <div class="mb-3">
+                        <p id="demo-id" class="p-2 border rounded">Element selected by ID (#demo-id)</p>
+                        <p class="demo-class p-2 border rounded">First element selected by Class (.demo-class)</p>
+                        <p class="demo-class p-2 border rounded">Second element selected by Class (.demo-class)</p>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2">
+                        <button id="btn-text" class="btn btn-primary">Change Text</button>
+                        <button id="btn-html" class="btn btn-success">Change HTML</button>
+                        <button id="btn-css" class="btn btn-warning">Apply CSS Styles</button>
+                        <button id="btn-reset" class="btn btn-outline-secondary">Reset Elements</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            console.log("jQuery is ready!");
+            
+            $("#console-status")
+                .removeClass("alert-info")
+                .addClass("alert-success")
+                .text("jQuery is ready!");
+
+            
+            $("#btn-text").click(function() {
+                $("#demo-id").text("Content changed using jQuery .text() method!");
+            });
+
+            $("#btn-html").click(function() {
+                $(".demo-class").html("Updated with <strong>.html()</strong> method and <em>custom HTML tags</em>!");
+            });
+
+            $("#btn-css").click(function() {
+                $("#demo-id").css("background-color", "#d1e7dd");
+
+                $(".demo-class").css({
+                    "color": "#842029",
+                    "background-color": "#f8d7da",
+                    "font-weight": "bold",
+                    "border-color": "#f5c2c7"
+                });
+
+                $("h4").css("color", "#0d6efd");
+            });
+
+            $("#btn-reset").click(function() {
+                $("#demo-id")
+                    .text("Element selected by ID (#demo-id)")
+                    .css({"background-color": "", "color": ""});
+
+                $(".demo-class")
+                    .text("Element selected by Class (.demo-class)")
+                    .css({"background-color": "", "color": "", "font-weight": "normal", "border-color": ""});
+
+                $("h4").css("color", "");
+            });
+        });
+    </script>
+</body>
+</html>
