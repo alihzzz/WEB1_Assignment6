@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6 - Part 4: Animations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .animation-area {
+            height: 250px;
+            position: relative;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .anim-box {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #0d6efd;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Assignment 6 (jQuery)</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="index.html">Part 1: Basic</a>
+                <a class="nav-link" href="part2.html">Part 2: Effects</a>
+                <a class="nav-link" href="part3.html">Part 3: DOM</a>
+                <a class="nav-link active" href="part4.html">Part 4: Animations</a>
+                <a class="nav-link" href="part5.html">Part 5: Mini Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="row justify-content-center g-4">
+            <div class="col-md-8">
+
+                <div class="card shadow-sm p-4 mb-4">
+                    <h4 class="card-title border-bottom pb-2 mb-3">Task 8: Basic Animation</h4>
+                    <div class="animation-area mb-3">
+                        <div id="box-basic" class="anim-box"></div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button id="btn-basic-anim" class="btn btn-primary">Animate Size & Position</button>
+                        <button id="btn-basic-reset" class="btn btn-outline-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm p-4 mb-4">
+                    <h4 class="card-title border-bottom pb-2 mb-3">Task 9: Sequential Animations</h4>
+                    <div class="animation-area mb-3">
+                        <div id="box-seq" class="anim-box bg-success"></div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button id="btn-seq-anim" class="btn btn-success">Run Sequence</button>
+                        <button id="btn-seq-reset" class="btn btn-outline-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm p-4">
+                    <h4 class="card-title border-bottom pb-2 mb-3">Task 10: Combined Animation</h4>
+                    <div class="animation-area mb-3">
+                        <div id="box-combined" class="anim-box bg-warning"></div>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button id="btn-comb-anim" class="btn btn-warning">Run Combined Animation</button>
+                        <button id="btn-comb-reset" class="btn btn-outline-secondary">Reset</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#btn-basic-anim").click(function() {
+                $("#box-basic").animate({
+                    left: '200px',
+                    width: '120px',
+                    height: '120px'
+                }, 800);
+            });
+
+            $("#btn-basic-reset").click(function() {
+                $("#box-basic").stop(true).animate({
+                    left: '20px',
+                    width: '80px',
+                    height: '80px'
+                }, 400);
+            });
+
+            $("#btn-seq-anim").click(function() {
+                let box = $("#box-seq");
+                box.animate({ left: '250px' }, 600)
+                   .animate({ top: '120px' }, 600)
+                   .animate({ width: '50px', height: '50px' }, 600)
+                   .animate({ left: '20px', top: '20px', width: '80px', height: '80px' }, 800);
+            });
+
+            $("#btn-seq-reset").click(function() {
+                $("#box-seq").stop(true, true).css({
+                    left: '20px',
+                    top: '20px',
+                    width: '80px',
+                    height: '80px'
+                });
+            });
+
+            $("#btn-comb-anim").click(function() {
+                $("#box-combined").animate({
+                    left: '220px',
+                    top: '100px',
+                    width: '130px',
+                    height: '130px',
+                    opacity: 0.3
+                }, 1000);
+            });
+
+            $("#btn-comb-reset").click(function() {
+                $("#box-combined").stop(true).animate({
+                    left: '20px',
+                    top: '20px',
+                    width: '80px',
+                    height: '80px',
+                    opacity: 1
+                }, 400);
+            });
+        });
+    </script>
+</body>
+</html>
