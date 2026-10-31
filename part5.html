@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 6 - Part 5: Mini Project (Accordion)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .accordion-header-custom {
+            background-color: #0d6efd;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            user-select: none;
+            transition: background-color 0.2s;
+        }
+        .accordion-header-custom:hover {
+            background-color: #0b5ed7;
+        }
+        .accordion-content-custom {
+            display: none;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #dee2e6;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+    </style>
+</head>
+<body class="bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">Assignment 6 (jQuery)</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="index.html">Part 1: Basic</a>
+                <a class="nav-link" href="part2.html">Part 2: Effects</a>
+                <a class="nav-link" href="part3.html">Part 3: DOM</a>
+                <a class="nav-link" href="part4.html">Part 4: Animations</a>
+                <a class="nav-link active" href="part5.html">Part 5: Mini Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+
+                <div class="card shadow-sm p-4">
+                    <h4 class="card-title border-bottom pb-2 mb-3">Task 11: Interactive Accordion Menu</h4>
+                    <p class="text-muted mb-4">Click on any section header to expand or collapse its content.</p>
+
+                    <div class="custom-accordion">
+                        <div class="accordion-item-custom mb-3">
+                            <div class="accordion-header-custom">Section 1: What is jQuery?</div>
+                            <div class="accordion-content-custom">
+                                jQuery is a fast, small, and feature-rich JavaScript library designed to simplify DOM manipulation, event handling, and animations.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item-custom mb-3">
+                            <div class="accordion-header-custom">Section 2: Why use Accordions?</div>
+                            <div class="accordion-content-custom">
+                                Accordion menus help organize large amounts of content into collapsible panels, improving user experience and saving page space.
+                            </div>
+                        </div>
+
+                        <div class="accordion-item-custom mb-3">
+                            <div class="accordion-header-custom">Section 3: How does .slideToggle() work?</div>
+                            <div class="accordion-content-custom">
+                                The .slideToggle() method animates the height of the matched elements. If an element is hidden, it slides down; if visible, it slides up.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(".accordion-header-custom").click(function() {
+                let currentContent = $(this).next(".accordion-content-custom");
+                
+                $(".accordion-content-custom").not(currentContent).slideUp();
+                
+                currentContent.slideToggle();
+            });
+        });
+    </script>
+</body>
+</html>
